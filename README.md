@@ -22,13 +22,14 @@ pnpm start-frontend
 
 Minimal:
 
-- [ ] Setup empty Nodejs app with express
-- [ ] Setup empty React app
-- [ ] Setup Typescipt
-- [ ] Setup Docker
-- [ ] Add dummy API
+- [X] Setup empty Nodejs app with express
+- [X] Setup empty React app
+- [X] Setup Typescipt
+- [X] Setup Docker
+- [X] Add dummy API
 - [ ] Use API from frontend
 - [ ] Add MongoDB
+- [ ] Implement all needed API endpoints
 - [ ] Add tests
 
 Nice to have:
