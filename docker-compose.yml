@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  client:
+    command: pnpm start-client
+    build:
+      context: .
+  server:
+    command: pnpm start-server
+    build:
+      context: .

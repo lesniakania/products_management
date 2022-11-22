@@ -1,0 +1,9 @@
+{
+  "name": "@products-management/root",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start-server": "pnpm --filter server start",
+    "start-client": "pnpm --filter client start"
+  }
+}
