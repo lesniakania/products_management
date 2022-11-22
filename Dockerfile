@@ -6,3 +6,4 @@ WORKDIR /app
 COPY . /app
 
 RUN pnpm install
+RUN pnpm build-api

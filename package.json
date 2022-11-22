@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start-server": "pnpm --filter server start",
-    "start-client": "pnpm --filter client start"
+    "start-api": "pnpm --filter api start",
+    "build-api": "pnpm --filter api build",
+    "start-frontend": "pnpm --filter frontend start"
   },
   "devDependencies": {
     "typescript": "^4.9.3"
