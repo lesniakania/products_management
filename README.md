@@ -22,14 +22,14 @@ pnpm start-frontend
 
 Minimal:
 
-- [] Use API from frontend
-- [] Add MongoDB
+- [ ] Use API from frontend
+- [ ] Add MongoDB
 
 Nice to have:
 
-- [] Add nodemon for hot reloading API code in Docker
-- [] Move frontend to Docker and implement nodemon too
+- [ ] Add nodemon for hot reloading API code in Docker
+- [ ] Move frontend to Docker and implement nodemon too
 
 Out of the scope, but should be present in real app:
 
-- [] Add authentication
+- [ ] Add authentication
