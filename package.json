@@ -5,5 +5,8 @@
   "scripts": {
     "start-server": "pnpm --filter server start",
     "start-client": "pnpm --filter client start"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3"
   }
 }
