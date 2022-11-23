@@ -3,9 +3,10 @@ import { RootState } from "../../app/store";
 import { Product } from "./productsAPI";
 import { fetchProducts } from "./productsAPI";
 
+export type ProductStatus = "idle" | "loading" | "failed";
 export interface ProductsState {
   value: Product[];
-  status: "idle" | "loading" | "failed";
+  status: ProductStatus;
 }
 
 const initialState: ProductsState = {
@@ -41,6 +42,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const selectProduct = (state: RootState) => state.products.value;
+export const selectProducts = (state: RootState) => state.products.value;
+export const selectProductsStatus = (state: RootState) => state.products.status;
 
 export default productsSlice.reducer;
