@@ -4,8 +4,9 @@ export type Product = {
   price: number;
 };
 
-export function fetchProducts() {
-  return new Promise<{ data: Product[] }>((resolve) =>
-    setTimeout(() => resolve({ data: [{ name: "Pencil", price: 2.5 }] }), 5000)
-  );
+// TODO: move it to ENV vars?
+const BASE_PATH = "http://localhost:5000";
+
+export function fetchProducts(): Promise<Response> {
+  return fetch(`${BASE_PATH}/products`);
 }
