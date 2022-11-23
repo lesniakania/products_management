@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
+import { Header } from "./Header";
+import { NewProductForm } from "./NewProductForm";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   selectProducts,
@@ -19,11 +12,36 @@ import {
   ProductStatus,
 } from "./productsSlice";
 import { Product } from "./productsAPI";
+import { ProductItem } from "./ProductItem";
 
 export function Products() {
   const products: Product[] = useAppSelector(selectProducts);
   const status: ProductStatus = useAppSelector(selectProductsStatus);
+  const [newProductClicked, setNewProductClicked] = useState(false);
   const dispatch = useAppDispatch();
+
+  const addProduct = () => {
+    setNewProductClicked(true);
+    return;
+  };
+
+  const saveProduct = () => {
+    setNewProductClicked(false);
+    return;
+  };
+
+  const cancelAddProduct = () => {
+    setNewProductClicked(false);
+    return;
+  };
+
+  const updateProduct = (product: Product) => {
+    return;
+  };
+
+  const deleteProduct = (product: Product) => {
+    return;
+  };
 
   useEffect(() => {
     dispatch(fetchProductsAsync());
@@ -37,36 +55,21 @@ export function Products() {
         bgcolor: "background.paper",
       }}
     >
-      {status === "loading" ? "Loading products..." : ""}
-      <ListItem disablePadding>
-        <ListItemText
-          primary={
-            <Typography variant="h4" gutterBottom>
-              Products
-            </Typography>
-          }
-        />
-        <ListItemIcon>
-          <Button>
-            <AddIcon fontSize="large" />
-          </Button>
-        </ListItemIcon>
-      </ListItem>
+      <Header addProduct={addProduct} status={status} />
       <Divider />
       <List>
+        {newProductClicked ? (
+          <NewProductForm
+            saveProduct={saveProduct}
+            cancelAddProduct={cancelAddProduct}
+          />
+        ) : null}
         {products.map((product) => (
-          <ListItem disablePadding key={`product-${product.id}`}>
-            <ListItemButton>
-              <ListItemText primary={product.name} />
-              <ListItemIcon>{`${product.price} EUR`}</ListItemIcon>
-              <Button>
-                <EditIcon fontSize="small" />
-              </Button>
-              <Button>
-                <DeleteIcon fontSize="small" />
-              </Button>
-            </ListItemButton>
-          </ListItem>
+          <ProductItem
+            updateProduct={updateProduct}
+            deleteProduct={deleteProduct}
+            product={product}
+          />
         ))}
       </List>
     </Box>
