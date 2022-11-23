@@ -12,4 +12,4 @@ app.listen(port, () => {
   console.log(`API is running on port: ${port}`);
 });
 
-app.get("/products", ProductsIndex);
+app.get("/api/v1/products", ProductsIndex);

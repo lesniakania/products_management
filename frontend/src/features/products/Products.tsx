@@ -22,7 +22,7 @@ export function Products() {
     <div>
       {status === "loading" ? "Loading products..." : ""}
       {products.map((product) => (
-        <div className="row">
+        <div className="row" key={`product-${product.id}`}>
           <span className="value">{product.name}</span>
           <span className="value">{product.price}</span>
         </div>
