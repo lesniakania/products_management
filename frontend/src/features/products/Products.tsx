@@ -6,6 +6,10 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
@@ -34,9 +38,20 @@ export function Products() {
       }}
     >
       {status === "loading" ? "Loading products..." : ""}
-      <Typography variant="h4" gutterBottom>
-        Products
-      </Typography>
+      <ListItem disablePadding>
+        <ListItemText
+          primary={
+            <Typography variant="h4" gutterBottom>
+              Products
+            </Typography>
+          }
+        />
+        <ListItemIcon>
+          <Button>
+            <AddIcon fontSize="large" />
+          </Button>
+        </ListItemIcon>
+      </ListItem>
       <Divider />
       <List>
         {products.map((product) => (
@@ -44,6 +59,12 @@ export function Products() {
             <ListItemButton>
               <ListItemText primary={product.name} />
               <ListItemIcon>{`${product.price} EUR`}</ListItemIcon>
+              <Button>
+                <EditIcon fontSize="small" />
+              </Button>
+              <Button>
+                <DeleteIcon fontSize="small" />
+              </Button>
             </ListItemButton>
           </ListItem>
         ))}

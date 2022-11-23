@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@emotion/react': ^11.10.5
   '@emotion/styled': ^11.10.5
+  '@mui/icons-material': ^5.10.15
   '@mui/material': ^5.10.15
   '@reduxjs/toolkit': ^1.9.0
   '@testing-library/jest-dom': ^5.16.5
@@ -17,6 +18,7 @@ specifiers:
 dependencies:
   '@emotion/react': 11.10.5_react@18.2.0
   '@emotion/styled': 11.10.5_3bfa5eb54b48d1642dfc89af82144f5d
+  '@mui/icons-material': 5.10.15_c90079a19fb2f310b9f17d327446f26c
   '@mui/material': 5.10.15_ec738eedf1c916cea4474b03dac7c3be
   '@reduxjs/toolkit': 1.9.0_react-redux@8.0.5+react@18.2.0
   '@testing-library/jest-dom': 5.16.5
@@ -2091,6 +2093,22 @@ packages:
 
   /@mui/core-downloads-tracker/5.10.15:
     resolution: {integrity: sha512-xFcS0LpdF0Q1qJrrNsYUv9PU+ovvhCEPTOMw2jcpEFtl3CA87dLpvztORR5oE2UBFjWF7qLQLOwboQU1+xC7Cw==}
+    dev: false
+
+  /@mui/icons-material/5.10.15_c90079a19fb2f310b9f17d327446f26c:
+    resolution: {integrity: sha512-fXkz7CtYTt4AH4YYT67VFhM/A3YCUqZGGLp/3BlzRPQRNEfFKknw3MgG1S5UYrY5weti8jxMx3mwwfhVP8OMhQ==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.1
+      '@mui/material': 5.10.15_ec738eedf1c916cea4474b03dac7c3be
+      react: 18.2.0
     dev: false
 
   /@mui/material/5.10.15_ec738eedf1c916cea4474b03dac7c3be:
