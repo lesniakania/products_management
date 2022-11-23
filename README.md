@@ -29,7 +29,7 @@ Minimal:
 - [x] Add dummy API
 - [x] Use API from frontend
 - [x] Implement interface for adding/editing products
-- [ ] Add MongoDB
+- [x] Add MongoDB
 - [ ] Implement all needed API endpoints
 - [ ] Add tests
 

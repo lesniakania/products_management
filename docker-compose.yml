@@ -6,3 +6,10 @@ services:
     command: pnpm start-api
     build:
       context: .
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=ania
+      - MONGO_INITDB_ROOT_PASSWORD=test
