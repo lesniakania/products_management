@@ -1,13 +1,14 @@
 import "./App.css";
 import { Products } from "./features/products/Products";
+import { StyledEngineProvider } from "@mui/material/styles";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <StyledEngineProvider injectFirst>
+      <div className="App">
         <Products />
-      </header>
-    </div>
+      </div>
+    </StyledEngineProvider>
   );
 }
 
