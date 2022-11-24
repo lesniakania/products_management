@@ -31,7 +31,7 @@ Minimal:
 - [x] Implement interface for adding/editing products
 - [x] Add MongoDB
 - [x] Implement all needed API endpoints
-- [ ] Add tests
+- [x] Add tests
 
 Nice to have:
 

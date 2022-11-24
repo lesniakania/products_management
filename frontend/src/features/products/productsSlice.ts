@@ -1,9 +1,4 @@
-import {
-  ActionReducerMapBuilder,
-  AnyAction,
-  createAsyncThunk,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { Product } from "./productsAPI";
 import {
@@ -65,9 +60,7 @@ export const deleteProductAsync = createAsyncThunk(
   }
 );
 
-export const extraReducers = (
-  builder: ActionReducerMapBuilder<ProductsState>
-) => {
+export const extraReducers = (builder: any) => {
   builder
     .addCase(fetchProductsAsync.pending, (state: ProductsState) => {
       state.status = "loading";
