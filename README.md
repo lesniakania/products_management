@@ -18,6 +18,12 @@ docker-compose up
 pnpm start-frontend
 ```
 
+## Running tests
+
+```bash
+pnpm test-frontend
+```
+
 # TODO
 
 Minimal:

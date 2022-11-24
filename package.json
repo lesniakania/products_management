@@ -5,7 +5,8 @@
   "scripts": {
     "start-api": "pnpm --filter api start",
     "build-api": "pnpm --filter api build",
-    "start-frontend": "pnpm --filter frontend start"
+    "start-frontend": "pnpm --filter frontend start",
+    "test-frontend": "pnpm --filter frontend test"
   },
   "devDependencies": {
     "typescript": "^4.9.3"
