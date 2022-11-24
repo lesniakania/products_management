@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  ActionReducerMapBuilder,
+  AnyAction,
+  createAsyncThunk,
+  createSlice,
+} from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { Product } from "./productsAPI";
 import {
@@ -60,27 +65,33 @@ export const deleteProductAsync = createAsyncThunk(
   }
 );
 
-export const productsSlice = createSlice({
-  name: "products",
-  initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProductsAsync.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchProductsAsync.fulfilled, (state, action) => {
+export const extraReducers = (
+  builder: ActionReducerMapBuilder<ProductsState>
+) => {
+  builder
+    .addCase(fetchProductsAsync.pending, (state: ProductsState) => {
+      state.status = "loading";
+    })
+    .addCase(
+      fetchProductsAsync.fulfilled,
+      (state: ProductsState, action: AnyAction) => {
         state.status = "idle";
         state.value = action.payload;
-      })
-      .addCase(fetchProductsAsync.rejected, (state) => {
-        state.status = "failed";
-      })
-      .addCase(createProductAsync.fulfilled, (state, action) => {
+      }
+    )
+    .addCase(fetchProductsAsync.rejected, (state: ProductsState) => {
+      state.status = "failed";
+    })
+    .addCase(
+      createProductAsync.fulfilled,
+      (state: ProductsState, action: AnyAction) => {
         const newProducts = [...state.value, action.payload];
         state.value = newProducts;
-      })
-      .addCase(updateProductAsync.fulfilled, (state, action) => {
+      }
+    )
+    .addCase(
+      updateProductAsync.fulfilled,
+      (state: ProductsState, action: AnyAction) => {
         const updatedProduct = action.payload;
         const oldProductIndex = state.value.findIndex(
           (product) => product.id === updatedProduct.id
@@ -91,8 +102,11 @@ export const productsSlice = createSlice({
           ...state.value.slice(oldProductIndex + 1),
         ];
         state.value = newProducts;
-      })
-      .addCase(deleteProductAsync.fulfilled, (state, action) => {
+      }
+    )
+    .addCase(
+      deleteProductAsync.fulfilled,
+      (state: ProductsState, action: AnyAction) => {
         const deletedProduct = action.payload;
         const oldProductIndex = state.value.findIndex(
           (product) => product.id === deletedProduct.id
@@ -102,8 +116,15 @@ export const productsSlice = createSlice({
           ...state.value.slice(oldProductIndex + 1),
         ];
         state.value = newProducts;
-      });
-  },
+      }
+    );
+};
+
+export const productsSlice = createSlice({
+  name: "products",
+  initialState,
+  reducers: {},
+  extraReducers: extraReducers,
 });
 
 export const selectProducts = (state: RootState) => state.products.value;
