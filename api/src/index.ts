@@ -3,6 +3,8 @@ import cors from "cors";
 import {
   Index as ProductsIndex,
   Create as ProductsCreate,
+  Update as ProductsUpdate,
+  Delete as ProductsDelete,
 } from "./controllers/ProductsController";
 import { Db, MongoClient } from "mongodb";
 
@@ -36,4 +38,6 @@ const setupApp = (db: Db) => {
 
   app.get("/api/v1/products", ProductsIndex(db));
   app.post("/api/v1/products", ProductsCreate(db));
+  app.put("/api/v1/products/:id", ProductsUpdate(db));
+  app.delete("/api/v1/products/:id", ProductsDelete(db));
 };
