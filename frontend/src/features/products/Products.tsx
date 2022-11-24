@@ -72,6 +72,7 @@ export function Products() {
         ) : null}
         {products.map((product) => (
           <ProductItem
+            key={`product-${product.id}`}
             updateProduct={updateProduct}
             deleteProduct={deleteProduct}
             product={product}

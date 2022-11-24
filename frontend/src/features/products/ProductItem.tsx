@@ -46,7 +46,7 @@ export function ProductItem(props: {
   };
 
   return (
-    <ListItem disablePadding key={`product-${product.id}`}>
+    <ListItem disablePadding>
       {editProductClicked ? (
         <ListItemButton>
           <ListItemButton>
