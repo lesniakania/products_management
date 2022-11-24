@@ -19,6 +19,22 @@ export function ProductItem(props: {
 
   const [editProductClicked, setEditProductClicked] = useState(false);
 
+  let name = product.name;
+  let price = product.price;
+
+  const onNameChanged = (event: { target: { value: any } }) => {
+    name = event.target.value;
+  };
+  const onPriceChanged = (event: { target: { value: any } }) => {
+    price = Number(event.target.value);
+  };
+
+  const onSaveClicked = () => {
+    updateProduct({ ...product, name, price });
+    setEditProductClicked(false);
+    return;
+  };
+
   const editProduct = () => {
     setEditProductClicked(true);
     return;
@@ -34,9 +50,17 @@ export function ProductItem(props: {
       {editProductClicked ? (
         <ListItemButton>
           <ListItemButton>
-            <TextField label="Name" defaultValue={product.name} />
-            <TextField label="Price" defaultValue={product.price} />
-            <Button onClick={() => updateProduct(product)}>Save</Button>
+            <TextField
+              label="Name"
+              defaultValue={product.name}
+              onChange={onNameChanged}
+            />
+            <TextField
+              label="Price"
+              defaultValue={product.price}
+              onChange={onPriceChanged}
+            />
+            <Button onClick={onSaveClicked}>Save</Button>
             <Button color="primary" onClick={cancelEditProduct}>
               <CancelIcon />
             </Button>

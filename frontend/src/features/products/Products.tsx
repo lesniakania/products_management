@@ -9,6 +9,9 @@ import {
   selectProducts,
   selectProductsStatus,
   fetchProductsAsync,
+  createProductAsync,
+  updateProductAsync,
+  deleteProductAsync,
   ProductStatus,
 } from "./productsSlice";
 import { Product } from "./productsAPI";
@@ -25,8 +28,9 @@ export function Products() {
     return;
   };
 
-  const saveProduct = () => {
+  const saveProduct = (attributes: { name: string; price: number }) => {
     setNewProductClicked(false);
+    dispatch(createProductAsync(attributes));
     return;
   };
 
@@ -36,10 +40,12 @@ export function Products() {
   };
 
   const updateProduct = (product: Product) => {
+    dispatch(updateProductAsync(product));
     return;
   };
 
   const deleteProduct = (product: Product) => {
+    dispatch(deleteProductAsync(product));
     return;
   };
 

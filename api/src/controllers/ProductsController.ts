@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { Db, WithId, Document } from "mongodb";
+import { Db, WithId, Document, ObjectId } from "mongodb";
 import { Product } from "../models/Product";
 
 const COLLECTION_NAME = "products";
 
 const present = (dbProduct: WithId<Document>): Product => {
   return {
-    id: dbProduct["id"],
+    id: String(dbProduct["_id"]),
     name: dbProduct["name"],
     price: dbProduct["price"],
   };
@@ -47,19 +47,23 @@ export const Update = (db: Db) => {
     const id = req.params.id;
     const json = await req.body;
     const updatedProduct = {
-      id,
       name: json.name,
       price: json.price,
     };
 
     try {
-      await productsCollection.updateOne(
-        { id },
+      const r = await productsCollection.updateOne(
+        { _id: new ObjectId(id) },
         {
           $set: updatedProduct,
         }
       );
-      res.status(200).json(updatedProduct);
+
+      res.status(200).json({
+        id,
+        name: json.name,
+        price: json.price,
+      });
     } catch (error) {
       res.status(400).json({ error: "Failed to save record" });
     }
@@ -71,7 +75,7 @@ export const Delete = (db: Db) => {
     const productsCollection = db.collection(COLLECTION_NAME);
     const id = req.params.id;
     try {
-      await productsCollection.deleteOne({ id });
+      await productsCollection.deleteMany({ _id: new ObjectId(id) });
       res.json({});
     } catch (error) {
       res.status(400).json({ error: "Failed to delete record" });
