@@ -30,13 +30,19 @@ Minimal:
 - [x] Use API from frontend
 - [x] Implement interface for adding/editing products
 - [x] Add MongoDB
-- [ ] Implement all needed API endpoints
+- [x] Implement all needed API endpoints
 - [ ] Add tests
 
 Nice to have:
 
 - [ ] Add nodemon for hot reloading API code in Docker
 - [ ] Move frontend to Docker and implement nodemon too
+- [ ] Take MongoDB host and port from ENV vars
+- [ ] Take API url from ENV vars
+- [ ] Add validation to the API
+- [ ] Add frontend validation
+- [ ] Use Formik for forms
+- [ ] Handle API response errors and display them to the user
 
 Out of the scope, but should be present in real app:
 
